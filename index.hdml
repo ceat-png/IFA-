@@ -112,7 +112,7 @@
         /* ===== NAV ===== */
         nav {
             background: linear-gradient(135deg, var(--verde-escuro), var(--verde));
-            padding: 16px 0;
+            padding: 12px 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -136,6 +136,20 @@
             font-weight: 800;
             font-size: 1.3rem;
             letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .nav-brand img {
+            height: 48px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-brand img:hover {
+            transform: scale(1.05);
         }
 
         .nav-brand span {
@@ -487,6 +501,7 @@
             transition: var(--transition);
             padding: 24px;
             text-align: center;
+            cursor: pointer;
         }
 
         .video-placeholder:hover {
@@ -608,9 +623,19 @@
         }
 
         footer .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-size: 1.4rem;
             font-weight: 800;
             color: #fff;
+        }
+
+        footer .footer-brand img {
+            height: 44px;
+            width: auto;
+            border-radius: 8px;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
         }
 
         footer .footer-brand span {
@@ -684,6 +709,14 @@
 
             .font-controls .label {
                 font-size: 0.6rem;
+            }
+
+            .nav-brand img {
+                height: 36px;
+            }
+
+            footer .footer-brand img {
+                height: 34px;
             }
         }
 
@@ -777,9 +810,10 @@
     <!-- ===== NAV ===== -->
     <nav>
         <div class="container">
-            <div class="nav-brand">
-                🦾 Super Máquinas <span>80</span>
-            </div>
+            <a href="#" class="nav-brand">
+                <img src="Design sem nome (12).png" alt="Logo Super Máquinas 80" />
+                Super Máquinas <span>80</span>
+            </a>
             <div class="nav-links">
                 <a href="#sobre">Sobre</a>
                 <a href="#componentes">Componentes</a>
@@ -961,7 +995,7 @@
                 Assista ao vídeo demonstrativo do funcionamento do sistema.
             </p>
             <div class="video-wrapper fade-up delay-2">
-                <div class="video-placeholder">
+                <div class="video-placeholder" id="videoPlaceholder">
                     <div class="play-icon">▶</div>
                     <div class="video-name">WhatsApp Video 2026-09-03 at 19.17.39</div>
                     <span style="font-size:0.85rem; opacity:0.7;">
@@ -1062,7 +1096,8 @@
     <footer>
         <div class="container">
             <div class="footer-brand">
-                🦾 Super Máquinas <span>80</span>
+                <img src="Design sem nome (12).png" alt="Logo Super Máquinas 80" />
+                Super Máquinas <span>80</span>
             </div>
             <div class="footer-info">
                 Projeto desenvolvido pelos alunos do 2º D – Noturno, sob orientação
@@ -1097,11 +1132,6 @@
             function setFontSize(size) {
                 currentSize = Math.min(Math.max(size, 12), 24);
                 body.style.fontSize = currentSize + 'px';
-                // Ajusta também os elementos que usam rem relativos
-                document.querySelectorAll('.hero-content h1, .section-title, .sobre-card h3, .comp-card h4, .equipe-card h4, .discip-item')
-                    .forEach(el => {
-                        // Deixa o tamanho relativo ao body
-                    });
             }
 
             aumentarBtn.addEventListener('click', function() {
@@ -1116,7 +1146,7 @@
                 setFontSize(16);
             });
 
-            // ---- SMOOTH SCROLL para links internos ----
+            // ---- SMOOTH SCROLL ----
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
@@ -1132,7 +1162,7 @@
                 });
             });
 
-            // ---- REVELAR ELEMENTOS AO SCROLL (Intersection Observer) ----
+            // ---- REVELAR ELEMENTOS AO SCROLL ----
             const fadeElements = document.querySelectorAll('.fade-up');
 
             const observer = new IntersectionObserver((entries) => {
@@ -1147,12 +1177,10 @@
             });
 
             fadeElements.forEach(el => {
-                // Garante que a animação só rode quando visível
                 el.style.animationPlayState = 'paused';
                 observer.observe(el);
             });
 
-            // Ativa elementos já visíveis no carregamento
             setTimeout(() => {
                 fadeElements.forEach(el => {
                     const rect = el.getBoundingClientRect();
@@ -1163,28 +1191,28 @@
                 });
             }, 200);
 
-            // ---- INTERATIVIDADE EXTRA: clique no vídeo ----
-            const videoPlaceholder = document.querySelector('.video-placeholder');
+            // ---- CLICK NO VÍDEO (simulação) ----
+            const videoPlaceholder = document.getElementById('videoPlaceholder');
+            const originalHTML = videoPlaceholder ? videoPlaceholder.innerHTML : '';
+
             if (videoPlaceholder) {
                 videoPlaceholder.addEventListener('click', function() {
+                    // Substitui pelo conteúdo de "reprodução"
                     this.innerHTML = `
-                    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
-                      <span style="font-size:3rem;">🎬</span>
-                      <span style="font-weight:600;color:var(--amarelo);">Reproduzindo vídeo...</span>
-                      <span style="font-size:0.8rem;opacity:0.6;">(simulação — arquivo: WhatsApp Video 2026-09-03 at 19.17.39)</span>
-                      <button onclick="this.parentElement.parentElement.innerHTML=originalVideoHTML" 
-                              style="background:var(--amarelo);border:none;padding:6px 20px;border-radius:40px;font-weight:700;color:var(--verde-escuro);cursor:pointer;margin-top:4px;">
-                        ⏹ Parar
-                      </button>
-                    </div>
-                  `;
+                        <div style="display:flex;flex-direction:column;align-items:center;gap:12px; width:100%;">
+                            <span style="font-size:3rem;">🎬</span>
+                            <span style="font-weight:600;color:var(--amarelo);">Reproduzindo vídeo...</span>
+                            <span style="font-size:0.8rem;opacity:0.6;">(simulação — arquivo: WhatsApp Video 2026-09-03 at 19.17.39)</span>
+                            <button onclick="this.parentElement.parentElement.innerHTML = originalHTML" 
+                                    style="background:var(--amarelo);border:none;padding:6px 20px;border-radius:40px;font-weight:700;color:var(--verde-escuro);cursor:pointer;margin-top:4px;">
+                                ⏹ Parar
+                            </button>
+                        </div>
+                    `;
                 });
             }
 
-            // Guarda o HTML original do vídeo para reset
-            const originalVideoHTML = document.querySelector('.video-placeholder')?.innerHTML || '';
-
-            // ---- PEQUENA BRINCADEIRA: digitar "super" no console ----
+            // ---- CONSOLE ----
             console.log('%c🦾 Super Máquinas 80 %c🚀',
                 'background:#0f5e0f;color:#f1c40f;font-size:1.4rem;font-weight:bold;padding:6px 12px;border-radius:8px 0 0 8px;',
                 'background:#f1c40f;color:#0f5e0f;font-size:1.4rem;font-weight:bold;padding:6px 12px;border-radius:0 8px 8px 0;'
