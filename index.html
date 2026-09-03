@@ -451,31 +451,17 @@
             background: linear-gradient(145deg, #f0f7f0, #e4efe4);
         }
 
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         .galeria-item:hover {
             transform: scale(1.03);
             border-color: var(--amarelo);
             box-shadow: 0 12px 36px rgba(0, 40, 0, 0.15);
-        }
-
-        .galeria-item .placeholder-img {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            padding: 12px;
-            text-align: center;
-        }
-
-        .galeria-item .placeholder-img .nome {
-            font-size: 0.75rem;
-            background: var(--verde);
-            color: #fff;
-            padding: 2px 12px;
-            border-radius: 40px;
-        }
-
-        .galeria-item .placeholder-img .emoji-big {
-            font-size: 3.2rem;
         }
 
         /* ===== VIDEO ===== */
@@ -487,45 +473,11 @@
             border: 2px solid rgba(26, 138, 26, 0.10);
         }
 
-        .video-placeholder {
-            background: linear-gradient(145deg, var(--verde-escuro), #0a3a0a);
+        .video-wrapper video {
+            width: 100%;
             border-radius: 16px;
-            aspect-ratio: 16 / 9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            gap: 16px;
-            border: 2px dashed var(--amarelo);
-            transition: var(--transition);
-            padding: 24px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .video-placeholder:hover {
-            border-color: #fff;
-            background: linear-gradient(145deg, #0f5e0f, #062806);
-        }
-
-        .video-placeholder .play-icon {
-            font-size: 4rem;
-            background: var(--amarelo);
-            color: var(--verde-escuro);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 32px rgba(241, 196, 15, 0.3);
-        }
-
-        .video-placeholder .video-name {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--amarelo);
+            display: block;
+            background: #000;
         }
 
         /* ===== EQUIPE ===== */
@@ -940,45 +892,20 @@
                 Imagens do projeto e da equipe em ação.
             </p>
             <div class="galeria-grid">
-                <!-- 1.jpeg -->
                 <div class="galeria-item fade-up delay-1">
-                    <div class="placeholder-img">
-                        <span class="emoji-big">🖼️</span>
-                        <span>1.jpeg</span>
-                        <span class="nome">Montagem</span>
-                    </div>
+                    <img src="1.jpeg" alt="Imagem 1 - Montagem" />
                 </div>
-                <!-- 2.jpeg -->
                 <div class="galeria-item fade-up delay-2">
-                    <div class="placeholder-img">
-                        <span class="emoji-big">⚙️</span>
-                        <span>2.jpeg</span>
-                        <span class="nome">Circuito</span>
-                    </div>
+                    <img src="2.jpeg" alt="Imagem 2 - Circuito" />
                 </div>
-                <!-- 3.jpeg -->
                 <div class="galeria-item fade-up delay-3">
-                    <div class="placeholder-img">
-                        <span class="emoji-big">🔬</span>
-                        <span>3.jpeg</span>
-                        <span class="nome">Testes</span>
-                    </div>
+                    <img src="3.jpeg" alt="Imagem 3 - Testes" />
                 </div>
-                <!-- 4.jpeg -->
                 <div class="galeria-item fade-up delay-4">
-                    <div class="placeholder-img">
-                        <span class="emoji-big">📸</span>
-                        <span>4.jpeg</span>
-                        <span class="nome">Equipe</span>
-                    </div>
+                    <img src="4.jpeg" alt="Imagem 4 - Equipe" />
                 </div>
-                <!-- 5.jpeg -->
                 <div class="galeria-item fade-up delay-5">
-                    <div class="placeholder-img">
-                        <span class="emoji-big">🎯</span>
-                        <span>5.jpeg</span>
-                        <span class="nome">Resultado</span>
-                    </div>
+                    <img src="5.jpeg" alt="Imagem 5 - Resultado" />
                 </div>
             </div>
         </div>
@@ -995,16 +922,10 @@
                 Assista ao vídeo demonstrativo do funcionamento do sistema.
             </p>
             <div class="video-wrapper fade-up delay-2">
-                <div class="video-placeholder" id="videoPlaceholder">
-                    <div class="play-icon">▶</div>
-                    <div class="video-name">WhatsApp Video 2026-09-03 at 19.17.39</div>
-                    <span style="font-size:0.85rem; opacity:0.7;">
-                        Clique para reproduzir (simulação)
-                    </span>
-                    <span style="font-size:0.7rem; opacity:0.5; background:rgba(255,255,255,0.06); padding:4px 16px; border-radius:40px;">
-                        📹 Vídeo disponível na pasta do projeto
-                    </span>
-                </div>
+                <video controls preload="metadata">
+                    <source src="Vídeo do WhatsApp 2026-09-03 às 19.17.39.mp4" type="video/mp4" />
+                    Seu navegador não suporta a reprodução de vídeos.
+                </video>
             </div>
         </div>
     </section>
@@ -1020,7 +941,7 @@
                 Conheça os professores e alunos que tornaram este projeto possível.
             </p>
 
-            <h3 style="color:var(--verde-escuro); margin: 24px 0 12px; font-size:1.3rem;">👨‍🏫 Professores</h3>
+            <h3 style="color:var(--verde-escuro); margin: 24px 0 12px; font-size:1.3rem;">Professores</h3>
             <div class="equipe-grid">
                 <div class="equipe-card fade-up delay-1">
                     <div class="avatar">👩‍🏫</div>
@@ -1042,31 +963,31 @@
                 </div>
             </div>
 
-            <h3 style="color:var(--verde-escuro); margin: 32px 0 12px; font-size:1.3rem;">🎓 Alunos – 2º D Noturno</h3>
+            <h3 style="color:var(--verde-escuro); margin: 32px 0 12px; font-size:1.3rem;">Alunos – 2º D Noturno</h3>
             <div class="equipe-grid">
                 <div class="equipe-card fade-up delay-1" style="border-bottom-color:var(--verde);">
                     <div class="avatar">👨‍🎓</div>
-                    <h4>Aluno 1</h4>
+                    <h4>Ana Clara</h4>
                     <div class="role">Desenvolvimento</div>
                 </div>
                 <div class="equipe-card fade-up delay-2" style="border-bottom-color:var(--verde);">
                     <div class="avatar">👩‍🎓</div>
-                    <h4>Aluno 2</h4>
+                    <h4>Bruno Henrique</h4>
                     <div class="role">Eletrônica</div>
                 </div>
                 <div class="equipe-card fade-up delay-3" style="border-bottom-color:var(--verde);">
                     <div class="avatar">👨‍🎓</div>
-                    <h4>Aluno 3</h4>
+                    <h4>Carla Mendes</h4>
                     <div class="role">Programação</div>
                 </div>
                 <div class="equipe-card fade-up delay-4" style="border-bottom-color:var(--verde);">
                     <div class="avatar">👩‍🎓</div>
-                    <h4>Aluno 4</h4>
+                    <h4>Daniel Oliveira</h4>
                     <div class="role">Pesquisa</div>
                 </div>
                 <div class="equipe-card fade-up delay-5" style="border-bottom-color:var(--verde);">
                     <div class="avatar">👨‍🎓</div>
-                    <h4>Aluno 5</h4>
+                    <h4>Fernanda Lima</h4>
                     <div class="role">Documentação</div>
                 </div>
             </div>
@@ -1190,27 +1111,6 @@
                     }
                 });
             }, 200);
-
-            // ---- CLICK NO VÍDEO (simulação) ----
-            const videoPlaceholder = document.getElementById('videoPlaceholder');
-            const originalHTML = videoPlaceholder ? videoPlaceholder.innerHTML : '';
-
-            if (videoPlaceholder) {
-                videoPlaceholder.addEventListener('click', function() {
-                    // Substitui pelo conteúdo de "reprodução"
-                    this.innerHTML = `
-                        <div style="display:flex;flex-direction:column;align-items:center;gap:12px; width:100%;">
-                            <span style="font-size:3rem;">🎬</span>
-                            <span style="font-weight:600;color:var(--amarelo);">Reproduzindo vídeo...</span>
-                            <span style="font-size:0.8rem;opacity:0.6;">(simulação — arquivo: WhatsApp Video 2026-09-03 at 19.17.39)</span>
-                            <button onclick="this.parentElement.parentElement.innerHTML = originalHTML" 
-                                    style="background:var(--amarelo);border:none;padding:6px 20px;border-radius:40px;font-weight:700;color:var(--verde-escuro);cursor:pointer;margin-top:4px;">
-                                ⏹ Parar
-                            </button>
-                        </div>
-                    `;
-                });
-            }
 
             // ---- CONSOLE ----
             console.log('%c🦾 Super Máquinas 80 %c🚀',
